@@ -1,4 +1,6 @@
+import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
+import hero from '../assets/Profile.jpg'
 
 
 export const Hero = () => {
@@ -30,9 +32,62 @@ export const Hero = () => {
         }, isDeleting ? 50 : 100);
         return () => clearTimeout(timeout);
     }, [displayText, isDeleting, currentIndex]);
-  return (
-    <section>
 
+    const scrollToSkills = () => {
+        const element = document.getElementById('skills');
+        element?.scrollIntoView({ behavior: 'smooth'});
+    };
+
+    const containerVariants = {
+        hidden: { opacity: 0},
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2,
+                duration: 0.8
+            }
+        }
+    };
+    const itemvariants = {
+        hidden : { y: 50, opacity: 0},
+        visible: {
+            y:0,
+            opacity: 1,
+            transition: {
+                duration: 0.8,
+                ease: "easeOut"
+            }
+        }
+    };
+
+  return (
+    <section id="home" className="min-h-screen flex items-center justify-center bg-gray-900 relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-64 left-96 w-80 h-80 bg-blue-500/20 rounded-full blur-xl">
+
+            </div>
+
+        </div>
+        <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="container mx-auto px-6 text-center relative z-10"
+        >
+            {/* profile image */}
+            <motion.div
+            variants={itemvariants}
+            className="mb-8"
+            >
+                <motion.div
+                whileHover={{scale: 1.05}}
+                className="w-56 h-56 mx-auto">
+                    <img src={hero} alt="profile" className="w-full h-full object-cover rounded-full shadow-2xl shadow-blue-500 hover:shadow-cyan-500/30 transition-all duration-300" />
+
+                </motion.div>
+
+            </motion.div>
+        </motion.div>
     </section>
   )
 }
