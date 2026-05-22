@@ -1,4 +1,5 @@
 import Hero from "./Components/Hero"
+import Navbar from "./Components/Navbar"
 
 
 export const App = () => {
@@ -6,6 +7,7 @@ export const App = () => {
     <div>
       <h1 class="">
     <Hero />
+    <Navbar/>
   </h1>
     </div>
   )

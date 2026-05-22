@@ -89,6 +89,7 @@ export const Hero = () => {
             </motion.div>
             <motion.h1 variants={itemvariants} className="text-5xl md:text-7xl font-bold text-white mb-6">
                 Hi, I'm <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-cyan-400" >Md Rakib Hossain</span>
+                </motion.h1>
                 {/* Animated Text */}
                 <motion.div variants={itemvariants} className="h-16 mb-6">
                     <h2 className="text-3xl md:text-4xl text-gray-200 font-light">
@@ -110,7 +111,7 @@ export const Hero = () => {
                         </motion.button>
 
                     </motion.div>
-            </motion.h1>
+            
         </motion.div>
     </section>
   )
