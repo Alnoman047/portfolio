@@ -41,8 +41,49 @@ const Navbar = () => {
 
   return (
     <>
-        <Motion.div>
-            <MotionConfig></MotionConfig>
+        <Motion.div initial= {{ x: -100, opacity: 0}} animate={{ x: 0, opacity:1}} transition={{ duration: 0.8, delay: 0.5}} className="fixed left-4 lg:left-20 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+        <Motion.div
+        animate={{
+            boxShadow : isHovered
+            ? [
+                '0 0 20px rgba(59, 130, 246, 0.6',
+                '0 0 40px rgba(6, 182, 212, 0.4',
+                '0 0 60px rgba(59, 130, 246, 0.3',
+            ].join(',')
+            : `0 0 30px rgba(59, 130, 246, 0.4),
+             0 0 50px rgba(6, 182, 212, 0.2)`
+        }}
+        transition={{ duration: 0.4}}
+        className='bg-gray-800/90 backdrop-blur-xl rounded-full p-3 lg:p-4 border border-blue-500/20 relative'>
+            <Motion.div
+            animate = {{ opacity: isHovered ? 0.8 : 0.4}}
+            trainsition= {{ duration: 0.3}}
+            className='absolute insert-0 rounded-full bg-linear-to-br from-blue-500/30 to-cyan-500/20 blur-lg -z-10'>   
+            </Motion.div>
+
+            <div className="flex flex-col space-y-3 lg:space-y-4">
+                {
+                    navItems.map((item, index) => {
+                        const IconComponent = item.icon;
+                        return (
+                            <Motion.button
+                            key={item.id}
+                            initial= {{ scale: 0, opacity: 0}}
+                            animate= {{ scale: 1, opacity: 1}}
+                transition={{duration: 0.5, delay: index * 0.1}}
+                onClick={() => scrollToSection(item.id)}
+                className
+                            ></Motion.button>
+                        )
+                    }
+
+                    )
+                }
+
+            </div>
+            
+        </Motion.div>
+            
         </Motion.div>
     </>
   )
