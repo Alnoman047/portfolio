@@ -1,4 +1,5 @@
 import { AcademicCapIcon, EnvelopeIcon, FolderIcon, BriefcaseIcon, HomeIcon } from "@heroicons/react/24/outline";
+import { Motion } from "framer-motion";
 
 import { useEffect, useState } from "react"
 
@@ -26,9 +27,24 @@ const Navbar = () => {
                 }
             });
         };
-    })
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const scrollToSection = (sectionId) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth'});
+        }
+    };
+
   return (
-    <div>Navbar</div>
+    <>
+        <Motion.div>
+            <MotionConfig></MotionConfig>
+        </Motion.div>
+    </>
   )
 }
 
