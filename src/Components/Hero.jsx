@@ -17,7 +17,7 @@ export const Hero = () => {
     //Typing Animation
     useEffect (() => {
         const timeout = setTimeout(() => {
-            if (!isDeleting && displayText === currentIndex) {
+            if (!isDeleting && displayText === currentText) {
                 setTimeout(() => setIsDeleting(true), 1000);
             } else if ( isDeleting && displayText === '') {
                 setIsDeleting(false);
@@ -25,13 +25,13 @@ export const Hero = () => {
             } else {
                 setDisplayText(
                     isDeleting
-                    ? currentIndex.substring(0, displayText.length - 1)
-                    : currentIndex.substring(0, displayText.length + 1)
+                    ? currentText.substring(0, displayText.length - 1)
+                    : currentText.substring(0, displayText.length + 1)
                 );
             }
         }, isDeleting ? 50 : 100);
         return () => clearTimeout(timeout);
-    }, [displayText, isDeleting, currentIndex]);
+    }, [displayText, isDeleting, currentText]);
 
     const scrollToSkills = () => {
         const element = document.getElementById('skills');
@@ -87,6 +87,30 @@ export const Hero = () => {
                 </motion.div>
 
             </motion.div>
+            <motion.h1 variants={itemvariants} className="text-5xl md:text-7xl font-bold text-white mb-6">
+                Hi, I'm <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-cyan-400" >Md Rakib Hossain</span>
+                {/* Animated Text */}
+                <motion.div variants={itemvariants} className="h-16 mb-6">
+                    <h2 className="text-3xl md:text-4xl text-gray-200 font-light">
+                        I'm a {''}
+                        <span className="text-cyan-300 border-r-2 border-cyan-300"> {displayText} </span>
+                    </h2>
+                </motion.div>
+                {/* Description */}
+                <motion.p variants={itemvariants} className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+                    I'm a passionate web developer with expertise in frontend technologies. I create stunning and responsive websites that provide seamless user experiences. With a keen eye for design and a commitment to clean code, I bring ideas to life on the web.
+                </motion.p>
+                {/* CTA Buttons */}
+                    <motion.div variants={itemvariants} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <motion.button onClick={scrollToSkills} whileHover={{scale: 1.05}} whileTap={{scale: 0.95}} className="px-8 py-4 bg-linear-to-r from-blue-500 to-cyan-500 text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                            View My Work
+                        </motion.button>
+                        <motion.button whileHover={{scale: 1.05}} whileTap={{scale: 0.95}} className="px-8 py-4 border-2 border-gray-400/30 text-white rounded-full font-semibold text-lg hover:bg-gray-800/50 transition-all duration-300">
+                            Download CV
+                        </motion.button>
+
+                    </motion.div>
+            </motion.h1>
         </motion.div>
     </section>
   )
