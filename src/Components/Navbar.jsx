@@ -72,12 +72,33 @@ const Navbar = () => {
                             animate= {{ scale: 1, opacity: 1}}
                 transition={{duration: 0.5, delay: index * 0.1}}
                 onClick={() => scrollToSection(item.id)}
-                className
-                            ></Motion.button>
+                className={ ` relative group p-2 lg:p-3 rounded-full transition-all duration-300 ${ activeSection === item.id
+                ? `bg-linear-to-r from-blue-500 to-cyan-500 text-white shadow-lg  shadow-blue-500/50`
+                : `text-gray-400 hover:text-white hover:bg-gray-700/60`
+                }`}
+                whileHover={{
+                    scale: 1.1,
+                    transition: { duration: 0.2} 
+                }}
+                whileTap={{scale: 0.95}}
+                >
+                    <IconComponent className="w-5 h-5 lg:w-6 lg:h-6 relative z-10"/>
+                    {activeSection === item.id && (
+                        <Motion.div
+                        animate={{
+                            boxShadow: [
+                        '0 0 10px rgba(59, 130, 246, 0.8',
+                        '0 0 20px rgba(59, 130, 246, 0.6',
+                        '0 0 10px rgba(59, 130, 246, 0.8',
+                            ]
+                        }}
+                        transition={{ duration: 0.2, repeat: Infinity}}
+                        className="absolute insert-0 rounded-full bg-blue-500/30"
+                        ></Motion.div>
+                    )}
+                        </Motion.button>
                         )
-                    }
-
-                    )
+                    })
                 }
 
             </div>
