@@ -1,5 +1,5 @@
 import { AcademicCapIcon, EnvelopeIcon, FolderIcon, BriefcaseIcon, HomeIcon } from "@heroicons/react/24/outline";
-import { Motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { useEffect, useState } from "react"
 
@@ -41,8 +41,8 @@ const Navbar = () => {
 
   return (
     <>
-        <Motion.div initial= {{ x: -100, opacity: 0}} animate={{ x: 0, opacity:1}} transition={{ duration: 0.8, delay: 0.5}} className="fixed left-4 lg:left-20 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-        <Motion.div
+        <motion.div initial= {{ x: -100, opacity: 0}} animate={{ x: 0, opacity:1}} transition={{ duration: 0.8, delay: 0.5}} className="fixed left-4 lg:left-20 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+        <motion.div
         animate={{
             boxShadow : isHovered
             ? [
@@ -55,18 +55,18 @@ const Navbar = () => {
         }}
         transition={{ duration: 0.4}}
         className='bg-gray-800/90 backdrop-blur-xl rounded-full p-3 lg:p-4 border border-blue-500/20 relative'>
-            <Motion.div
+            <motion.div
             animate = {{ opacity: isHovered ? 0.8 : 0.4}}
             trainsition= {{ duration: 0.3}}
             className='absolute insert-0 rounded-full bg-linear-to-br from-blue-500/30 to-cyan-500/20 blur-lg -z-10'>   
-            </Motion.div>
+            </motion.div>
 
             <div className="flex flex-col space-y-3 lg:space-y-4">
                 {
                     navItems.map((item, index) => {
                         const IconComponent = item.icon;
                         return (
-                            <Motion.button
+                            <motion.button
                             key={item.id}
                             initial= {{ scale: 0, opacity: 0}}
                             animate= {{ scale: 1, opacity: 1}}
@@ -84,7 +84,7 @@ const Navbar = () => {
                 >
                     <IconComponent className="w-5 h-5 lg:w-6 lg:h-6 relative z-10"/>
                     {activeSection === item.id && (
-                        <Motion.div
+                        <motion.div
                         animate={{
                             boxShadow: [
                         '0 0 10px rgba(59, 130, 246, 0.8',
@@ -94,18 +94,28 @@ const Navbar = () => {
                         }}
                         transition={{ duration: 0.2, repeat: Infinity}}
                         className="absolute insert-0 rounded-full bg-blue-500/30"
-                        ></Motion.div>
+                        >
+
+                        </motion.div>
                     )}
-                        </Motion.button>
-                        )
+                    <div className="absolute left-full ml-3 px-2 py-1 lg:px-3 lg:py-2 bg-gray-900/95 text-white text-xs lg:text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap backdrop-blur-sm border border-gray-700 shadow-xl">
+                    {item.label}
+                    <div className="absolute -left-1 transform -translate-y-1/2 w-2 h-2 bg-gray-900 rotate-45">
+
+                    </div>
+
+                    </div>
+                        </motion.button>
+
+                        );
                     })
                 }
 
             </div>
             
-        </Motion.div>
+        </motion.div>
             
-        </Motion.div>
+        </motion.div>
     </>
   )
 }
