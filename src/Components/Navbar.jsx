@@ -116,6 +116,33 @@ const Navbar = () => {
         </motion.div>
             
         </motion.div>
+        {/* Mobile Nav buttion*/ }
+        <motion.div
+        initial= {{ y: 100, opacity: 0}}
+        animate= {{ y: 0, opacity: 1}}
+        transition={{ duration: 0.6, delay: 0.3}}
+        className=" fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 lg:hidden w-max">
+            <div className= " bg-gray-800/90 backdrop-blur-xl rounded-2xl p-2 border border-blue-500/20 shadow-lg shadow-blue-500/20">
+                <div className="flex space-x-1">
+                    {navItems.map((item) => {
+                     const IconComponent = item.icon;
+                        return (
+                            <motion.button 
+                            key={item.id}
+                            onClick={() => scrollToSection(item.id)}
+                            className= {`relative p-3 rounded-xl transition-all duration-300 ${activeSection === item.id ? 'bg-linear-to-r from-blue-500 to-cyan-500 text-white' : `text-gray-400 hover:text-white hover:bg-gray-700/60`
+
+                            }`}
+                            whileTap={{ scale: 0.9}}>
+                                <IconComponent className="w-5 h-5" />
+                                
+                            </motion.button>
+                        )
+                    })}
+                </div>
+            </div>
+
+        </motion.div>
     </>
   )
 }
