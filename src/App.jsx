@@ -1,5 +1,6 @@
 import Hero from "./Components/Hero"
 import Navbar from "./Components/Navbar"
+import Skills from "./Components/Skills"
 
 
 export const App = () => {
@@ -8,6 +9,7 @@ export const App = () => {
       <h1 class="">
     <Hero />
     <Navbar/>
+    <Skills />
   </h1>
     </div>
   )
