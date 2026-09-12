@@ -115,6 +115,47 @@ const Skills = () => {
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur accusantium maxime et, soluta corporis dignissimos dolor, blanditiis temporibus delectus itaque quis labore repellat amet enim quam ducimus ab corrupti veritatis?
                 </motion.p>
                  {/* Skills Section */}
+                <motion.div variants={itemVariants}>
+                    <div className='space-y-4'>
+                        {skills.map((skill, index) => (
+                            <motion.div
+                            key={skill.name}
+                            className='flex items-center'
+                            initial= {{ opacity: 0, x: -50}}
+                            whileInView={{ opacity: 1, x: 0}}
+                 transition={{ duration: 0.5, delay: index * 0.1}}
+                 viewport= {{ once: true}}>
+                    <div className='w-10 h-10 mr-4 bg-gray-800/80 backdrop-blur-sm rounded-full flex items-center justify-center border border-blue-500/30'>
+                            <img src={skill.icon} alt={skill.name} className='w-6 h-6 object-contain'/>
+                    </div>
+                    <div className='flex-1'>
+                        <div className='flex justify-between mb-1'>
+                            <span className='text-gray-300'>
+                                {skill.name}
+                            </span>
+                            <span className='text-cyan-300'>
+                                {skill.level}%
+                            </span>
+                        </div>
+                        <div className='w=full bg-gray-700 rounded-full h-2.5'>
+                            <motion.div 
+                            className='bg-linear-to-r from-blue-500 to-cyan-500 h-2.5 rounded-full'
+                            initial = {{ width: 0}}
+                            whileInView= {{ width: `${skill.level}%`}}
+                            transition={{duration: 1, delay: index * 0.2}}
+                            viewport={{ once: true}}
+                            >
+
+                            </motion.div>
+
+                        </div>
+
+                    </div>
+
+                            </motion.div>
+                        ))}
+                    </div>
+                 </motion.div>
             </motion.div>
             </div> 
         </motion.div>
