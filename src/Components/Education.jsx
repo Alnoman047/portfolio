@@ -86,6 +86,7 @@ const Education = () => {
                     className='w-12 h-12 text-cyan-400' />
                 </motion.div>
                 </div>
+                {/* start from 49:54 */}
             </motion.div>
         </motion.div>
         </section>
